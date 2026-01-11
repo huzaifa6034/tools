@@ -1,0 +1,8 @@
+{
+  "name": "Toolly.online - 30+ Professional Tools",
+  "description": "A comprehensive suite of 30+ professional online tools including AI generation, file conversion, code utilities, and more. Fast, secure, and mobile-friendly.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
