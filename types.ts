@@ -16,6 +16,7 @@ export interface Tool {
   rating?: number;
   useCount?: number;
   isPremium?: boolean;
+  status?: 'active' | 'inactive';
 }
 
 export interface UsageMetric {

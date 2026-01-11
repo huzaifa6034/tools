@@ -12,6 +12,11 @@ import Footer from './components/Footer.tsx';
 import SEOHeader from './components/SEOHeader.tsx';
 import ShareButtons from './components/ShareButtons.tsx';
 
+// Admin Components
+import { AuthProvider, useAuth } from './admin/AuthContext.tsx';
+import LoginPage from './admin/LoginPage.tsx';
+import AdminDashboard from './admin/AdminDashboard.tsx';
+
 // Tool Components
 import QRCodeTool from './tools/QRCodeTool.tsx';
 import AIImageTool from './tools/AIImageTool.tsx';
@@ -31,7 +36,6 @@ import SpeechToTextTool from './tools/SpeechToTextTool.tsx';
 import ImageToPDFTool from './tools/ImageToPDFTool.tsx';
 import NotepadTool from './tools/NotepadTool.tsx';
 import EmojiConverterTool from './tools/EmojiConverterTool.tsx';
-import AdminDashboard from './admin/AdminDashboard.tsx';
 
 // Loading Skeleton
 const Skeleton = () => (
@@ -43,6 +47,12 @@ const Skeleton = () => (
     </div>
   </div>
 );
+
+const AdminGuard: React.FC<{ children: React.ReactNode, tools: Tool[] }> = ({ children, tools }) => {
+  const { isAuthenticated } = useAuth();
+  if (!isAuthenticated) return <LoginPage />;
+  return <AdminDashboard tools={tools} />;
+};
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -110,36 +120,38 @@ export default function App() {
   }, []);
 
   return (
-    <HashRouter>
-      <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-500">
-        <Navbar 
-          searchQuery={searchQuery} 
-          setSearchQuery={setSearchQuery} 
-          isDarkMode={isDarkMode} 
-          setIsDarkMode={setIsDarkMode} 
-        />
-        
-        <main className="flex-1 max-w-7xl mx-auto w-full px-4 py-8 flex flex-col md:flex-row gap-8">
-          <div className="hidden lg:block w-72 flex-shrink-0">
-            <Sidebar categories={CATEGORIES} activeCategory={activeCategory} setActiveCategory={setActiveCategory} favorites={favorites} tools={fullTools} />
-          </div>
+    <AuthProvider>
+      <HashRouter>
+        <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-500">
+          <Navbar 
+            searchQuery={searchQuery} 
+            setSearchQuery={setSearchQuery} 
+            isDarkMode={isDarkMode} 
+            setIsDarkMode={setIsDarkMode} 
+          />
           
-          <div className="flex-1">
-            <Suspense fallback={<Skeleton />}>
-              <Routes>
-                <Route path="/" element={<ToolGrid tools={fullTools} searchQuery={searchQuery} activeCategory={activeCategory} favorites={favorites} toggleFavorite={toggleFavorite} />} />
-                <Route path="/admin" element={<AdminDashboard tools={fullTools} />} />
-                {fullTools.map(tool => (
-                  <Route key={tool.id} path={`/${tool.slug}`} element={<ToolWrapper tool={tool}><tool.component /></ToolWrapper>} />
-                ))}
-              </Routes>
-            </Suspense>
-          </div>
-        </main>
-        
-        <Footer />
-      </div>
-    </HashRouter>
+          <main className="flex-1 max-w-7xl mx-auto w-full px-4 py-8 flex flex-col md:flex-row gap-8">
+            <div className="hidden lg:block w-72 flex-shrink-0">
+              <Sidebar categories={CATEGORIES} activeCategory={activeCategory} setActiveCategory={setActiveCategory} favorites={favorites} tools={fullTools} />
+            </div>
+            
+            <div className="flex-1">
+              <Suspense fallback={<Skeleton />}>
+                <Routes>
+                  <Route path="/" element={<ToolGrid tools={fullTools} searchQuery={searchQuery} activeCategory={activeCategory} favorites={favorites} toggleFavorite={toggleFavorite} />} />
+                  <Route path="/admin" element={<AdminGuard tools={fullTools}><AdminDashboard tools={fullTools} /></AdminGuard>} />
+                  {fullTools.map(tool => (
+                    <Route key={tool.id} path={`/${tool.slug}`} element={<ToolWrapper tool={tool}><tool.component /></ToolWrapper>} />
+                  ))}
+                </Routes>
+              </Suspense>
+            </div>
+          </main>
+          
+          <Footer />
+        </div>
+      </HashRouter>
+    </AuthProvider>
   );
 }
 

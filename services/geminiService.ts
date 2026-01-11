@@ -1,5 +1,5 @@
 
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI, Modality } from "@google/genai";
 
 export const decodeBase64 = (base64: string) => {
   const binaryString = atob(base64);
@@ -57,7 +57,7 @@ export const textToSpeechGemini = async (text: string) => {
     model: "gemini-2.5-flash-preview-tts",
     contents: [{ parts: [{ text }] }],
     config: {
-      responseModalities: ["AUDIO"],
+      responseModalities: [Modality.AUDIO],
       speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: 'Kore' } } }
     }
   });
