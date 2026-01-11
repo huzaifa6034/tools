@@ -1,0 +1,19 @@
+
+{
+  "short_name": "Toolly",
+  "name": "Toolly.online - Professional Tools",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3242/3242257.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#2563eb",
+  "description": "30+ professional online tools for developers and creators."
+}

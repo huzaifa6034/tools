@@ -1,7 +1,9 @@
 
 import React from 'react';
 import { Tool, ToolCategory } from '../types';
-import { Link } from 'react-router-dom';
+// Fixing react-router-dom errors by using namespace import
+import * as ReactRouterDOM from 'react-router-dom';
+const { Link } = ReactRouterDOM;
 
 interface SidebarProps {
   categories: readonly string[];

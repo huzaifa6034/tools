@@ -1,6 +1,8 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+// Fixing react-router-dom errors by using namespace import
+import * as ReactRouterDOM from 'react-router-dom';
+const { Link } = ReactRouterDOM;
 
 const Footer: React.FC = () => {
   return (

@@ -2,98 +2,37 @@
 import React from 'react';
 import { Tool } from './types';
 
-// Lazy loading tools would be ideal, but for this demo we'll import them
-// Tool components will be created in separate files
-
 export const TOOLS_DATA: Partial<Tool>[] = [
-  {
-    id: 'qr-gen',
-    name: 'QR Code Generator',
-    slug: 'qr-code-generator',
-    category: 'Utility',
-    icon: 'fa-qrcode',
-    description: 'Generate customizable QR codes for URLs, text, and more.',
-    seoTitle: 'Free Online QR Code Generator | Toolly.online',
-    seoDescription: 'Create high-quality QR codes instantly. Download as PNG or share.',
-    keywords: ['qr code', 'generator', 'free', 'online']
-  },
-  {
-    id: 'ai-img',
-    name: 'AI Image Generator',
-    slug: 'ai-image-generator',
-    category: 'AI',
-    icon: 'fa-wand-magic-sparkles',
-    description: 'Transform text into stunning images using advanced AI.',
-    seoTitle: 'AI Text-to-Image Generator | Toolly.online',
-    seoDescription: 'Generate professional images from text prompts using Google Gemini AI.',
-    keywords: ['ai image', 'text to image', 'stable diffusion', 'gemini']
-  },
-  {
-    id: 'url-short',
-    name: 'URL Shortener',
-    slug: 'url-shortener',
-    category: 'Utility',
-    icon: 'fa-link',
-    description: 'Shorten long URLs into manageable links.',
-    seoTitle: 'Free URL Shortener | Toolly.online',
-    seoDescription: 'Simple and fast URL shortening service.',
-    keywords: ['url', 'shortener', 'link', 'tinyurl']
-  },
-  {
-    id: 'json-format',
-    name: 'JSON Formatter',
-    slug: 'json-formatter',
-    category: 'Developer',
-    icon: 'fa-code',
-    description: 'Beautify, validate, and minify JSON data.',
-    seoTitle: 'Online JSON Formatter & Validator | Toolly.online',
-    seoDescription: 'Clean up your JSON code with one click. Error detection included.',
-    keywords: ['json', 'formatter', 'beautifier', 'validator']
-  },
-  {
-    id: 'pw-gen',
-    name: 'Password Generator',
-    slug: 'password-generator',
-    category: 'Utility',
-    icon: 'fa-key',
-    description: 'Create strong, secure, and customizable passwords.',
-    seoTitle: 'Secure Password Generator | Toolly.online',
-    seoDescription: 'Generate unhackable passwords with custom length and character sets.',
-    keywords: ['password', 'security', 'generator', 'safe']
-  },
-  {
-    id: 'img-comp',
-    name: 'Image Compressor',
-    slug: 'image-compressor',
-    category: 'Media',
-    icon: 'fa-file-image',
-    description: 'Reduce image file size without losing quality.',
-    seoTitle: 'Online Image Compressor | Optimize JPG & PNG',
-    seoDescription: 'Fast, client-side image compression for web optimization.',
-    keywords: ['image', 'compress', 'optimize', 'png', 'jpg']
-  },
-  {
-    id: 'txt-speech',
-    name: 'Text to Speech',
-    slug: 'text-to-speech',
-    category: 'AI',
-    icon: 'fa-volume-high',
-    description: 'Convert any text into natural-sounding audio.',
-    seoTitle: 'Natural Text-to-Speech Converter | Toolly.online',
-    seoDescription: 'Generate AI voiceovers from text using high-quality voices.',
-    keywords: ['tts', 'text to speech', 'audio', 'voiceover']
-  },
-  {
-    id: 'word-count',
-    name: 'Word Counter',
-    slug: 'word-counter',
-    category: 'Text',
-    icon: 'fa-list-ol',
-    description: 'Count words, characters, and reading time of your text.',
-    seoTitle: 'Free Word & Character Counter | Toolly.online',
-    seoDescription: 'Detailed text analysis including word count, characters, and density.',
-    keywords: ['word count', 'character count', 'analyzer', 'text']
-  }
+  { id: 'qr-gen', name: 'QR Code Generator', slug: 'qr-code-generator', category: 'Utility', icon: 'fa-qrcode', description: 'Generate custom QR codes for URLs and text.', seoTitle: 'QR Code Generator | Toolly.online', seoDescription: 'Create high-quality QR codes instantly.', keywords: ['qr', 'generator'] },
+  { id: 'url-short', name: 'URL Shortener', slug: 'url-shortener', category: 'Utility', icon: 'fa-link', description: 'Shorten long URLs with one click.', seoTitle: 'URL Shortener | Toolly.online', seoDescription: 'Free URL shortening service.', keywords: ['url', 'shortener'] },
+  { id: 'ai-img', name: 'AI Image Generator', slug: 'ai-image-generator', category: 'AI', icon: 'fa-wand-magic-sparkles', description: 'Generate stunning images from text prompts.', seoTitle: 'AI Image Generator | Toolly.online', seoDescription: 'Text to image generation with AI.', keywords: ['ai', 'image', 'generation'] },
+  { id: 'pdf-comp', name: 'PDF Compressor', slug: 'pdf-compressor', category: 'Media', icon: 'fa-file-pdf', description: 'Reduce PDF file size while keeping quality.', seoTitle: 'PDF Compressor | Toolly.online', seoDescription: 'Online PDF optimization.', keywords: ['pdf', 'compress'] },
+  { id: 'img-comp', name: 'Image Compressor', slug: 'image-compressor', category: 'Media', icon: 'fa-file-image', description: 'Optimize JPG/PNG images.', seoTitle: 'Image Compressor | Toolly.online', seoDescription: 'Compress images for web.', keywords: ['image', 'optimize'] },
+  { id: 'b64-tool', name: 'Base64 Encoder/Decoder', slug: 'base64-encoder-decoder', category: 'Developer', icon: 'fa-shield-halved', description: 'Convert text/images to Base64 and back.', seoTitle: 'Base64 Tool | Toolly.online', seoDescription: 'Encode or decode base64 strings.', keywords: ['base64', 'coder'] },
+  { id: 'txt-speech', name: 'Text to Speech', slug: 'text-to-speech', category: 'AI', icon: 'fa-volume-high', description: 'Convert text to natural audio MP3.', seoTitle: 'Text to Speech | Toolly.online', seoDescription: 'AI voice generation.', keywords: ['tts', 'voice'] },
+  { id: 'speech-txt', name: 'Speech to Text', slug: 'speech-to-text', category: 'AI', icon: 'fa-microphone', description: 'Accurate audio to text transcription.', seoTitle: 'Speech to Text | Toolly.online', seoDescription: 'Transcribe audio instantly.', keywords: ['speech', 'transcribe'] },
+  { id: 'vid-mp3', name: 'Video to MP3', slug: 'video-to-mp3', category: 'Media', icon: 'fa-file-audio', description: 'Extract audio from video files.', seoTitle: 'Video to MP3 | Toolly.online', seoDescription: 'Extract MP3 from video.', keywords: ['video', 'audio', 'mp3'] },
+  { id: 'img-pdf', name: 'Image to PDF', slug: 'image-to-pdf', category: 'Media', icon: 'fa-images', description: 'Convert images into a single PDF.', seoTitle: 'Image to PDF | Toolly.online', seoDescription: 'Create PDF from images.', keywords: ['image', 'pdf'] },
+  { id: 'pw-gen', name: 'Password Generator', slug: 'password-generator', category: 'Utility', icon: 'fa-key', description: 'Generate strong, secure passwords.', seoTitle: 'Password Generator | Toolly.online', seoDescription: 'Secure password tool.', keywords: ['password', 'security'] },
+  { id: 'color-picker', name: 'Color Picker', slug: 'color-picker', category: 'Developer', icon: 'fa-eye-dropper', description: 'Select and convert hex/RGB colors.', seoTitle: 'Color Picker | Toolly.online', seoDescription: 'Online color tools.', keywords: ['color', 'hex', 'rgb'] },
+  { id: 'html-min', name: 'HTML Minifier', slug: 'html-minifier', category: 'Developer', icon: 'fa-file-code', description: 'Compress HTML code for speed.', seoTitle: 'HTML Minifier | Toolly.online', seoDescription: 'Minify HTML instantly.', keywords: ['html', 'minify'] },
+  { id: 'css-min', name: 'CSS Minifier', slug: 'css-minifier', category: 'Developer', icon: 'fa-scissors', description: 'Optimize CSS stylesheets.', seoTitle: 'CSS Minifier | Toolly.online', seoDescription: 'Minify CSS files.', keywords: ['css', 'minify'] },
+  { id: 'js-min', name: 'JS Minifier', slug: 'js-minifier', category: 'Developer', icon: 'fa-file-js', description: 'Minify JavaScript code.', seoTitle: 'JS Minifier | Toolly.online', seoDescription: 'Optimize JS code.', keywords: ['js', 'minify'] },
+  { id: 'json-format', name: 'JSON Formatter', slug: 'json-formatter', category: 'Developer', icon: 'fa-code', description: 'Beautify and validate JSON.', seoTitle: 'JSON Formatter | Toolly.online', seoDescription: 'Clean up JSON code.', keywords: ['json', 'format'] },
+  { id: 'b64-img', name: 'Base64 Image Decoder', slug: 'base64-image-decoder', category: 'Developer', icon: 'fa-image', description: 'Convert Base64 strings to images.', seoTitle: 'Base64 Image Tool | Toolly.online', seoDescription: 'Decode base64 to image.', keywords: ['base64', 'image'] },
+  { id: 'web-shot', name: 'Website Screenshot', slug: 'website-screenshot', category: 'Utility', icon: 'fa-camera-retro', description: 'Capture full-page website screenshots.', seoTitle: 'Web Screenshot | Toolly.online', seoDescription: 'Take site screenshots.', keywords: ['screenshot', 'web'] },
+  { id: 'ip-info', name: 'IP & Device Info', slug: 'ip-device-info', category: 'Utility', icon: 'fa-globe', description: 'View your IP and device details.', seoTitle: 'IP Info | Toolly.online', seoDescription: 'What is my IP?', keywords: ['ip', 'device'] },
+  { id: 'emoji-conv', name: 'Emoji Converter', slug: 'emoji-converter', category: 'Social', icon: 'fa-face-smile', description: 'Convert text to emojis easily.', seoTitle: 'Emoji Tool | Toolly.online', seoDescription: 'Emoji conversion tool.', keywords: ['emoji', 'text'] },
+  { id: 'file-conv', name: 'File Converter', slug: 'file-converter', category: 'Utility', icon: 'fa-file-export', description: 'Convert between various file formats.', seoTitle: 'File Converter | Toolly.online', seoDescription: 'All-in-one converter.', keywords: ['file', 'convert'] },
+  { id: 'yt-down', name: 'YouTube Downloader', slug: 'youtube-downloader', category: 'Social', icon: 'fa-video', description: 'Download video or audio from YouTube.', seoTitle: 'YouTube Downloader | Toolly.online', seoDescription: 'Download YT videos.', keywords: ['youtube', 'download'] },
+  { id: 'vid-comp', name: 'Video Compressor', slug: 'video-compressor', category: 'Media', icon: 'fa-compress', description: 'Reduce video file size online.', seoTitle: 'Video Compressor | Toolly.online', seoDescription: 'Optimize video size.', keywords: ['video', 'compress'] },
+  { id: 'pal-checker', name: 'Palindrome Checker', slug: 'palindrome-checker', category: 'Text', icon: 'fa-rotate-left', description: 'Check if text is a palindrome.', seoTitle: 'Palindrome Checker | Toolly.online', seoDescription: 'Verify palindromes.', keywords: ['palindrome', 'check'] },
+  { id: 'lorem-gen', name: 'Lorem Ipsum Generator', slug: 'lorem-ipsum-generator', category: 'Text', icon: 'fa-font', description: 'Generate dummy placeholder text.', seoTitle: 'Lorem Ipsum | Toolly.online', seoDescription: 'Placeholder text generator.', keywords: ['lorem', 'ipsum'] },
+  { id: 'md-editor', name: 'Markdown Editor', slug: 'markdown-editor', category: 'Text', icon: 'fa-file-pen', description: 'Live preview Markdown editor.', seoTitle: 'Markdown Editor | Toolly.online', seoDescription: 'Online MD editor.', keywords: ['markdown', 'editor'] },
+  { id: 'word-count', name: 'Word Counter', slug: 'word-counter', category: 'Text', icon: 'fa-list-ol', description: 'Count words and characters.', seoTitle: 'Word Counter | Toolly.online', seoDescription: 'Word count tool.', keywords: ['word', 'counter'] },
+  { id: 'txt-reverse', name: 'Text Reverser', slug: 'text-reverser', category: 'Text', icon: 'fa-backward', description: 'Instantly reverse any text.', seoTitle: 'Text Reverser | Toolly.online', seoDescription: 'Reverse text strings.', keywords: ['text', 'reverse'] },
+  { id: 'notepad', name: 'Online Notepad', slug: 'online-notepad', category: 'Utility', icon: 'fa-note-sticky', description: 'Save and edit notes in browser.', seoTitle: 'Notepad | Toolly.online', seoDescription: 'Browser-based notepad.', keywords: ['note', 'notepad'] },
+  { id: 'stopwatch', name: 'Stopwatch / Timer', slug: 'stopwatch-timer', category: 'Utility', icon: 'fa-stopwatch', description: 'Accurate online timer.', seoTitle: 'Stopwatch | Toolly.online', seoDescription: 'Online timer tool.', keywords: ['stopwatch', 'timer'] }
 ];
 
 export const CATEGORIES = ['All', 'AI', 'Media', 'Developer', 'Utility', 'Text', 'Social'] as const;
