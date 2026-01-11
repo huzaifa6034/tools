@@ -12,16 +12,23 @@ export interface Tool {
   seoTitle: string;
   seoDescription: string;
   keywords: string[];
+  tutorial?: string;
+  rating?: number;
+  useCount?: number;
+  isPremium?: boolean;
 }
 
 export interface UsageMetric {
   toolId: string;
   timestamp: number;
-  action: 'use' | 'download' | 'copy';
+  action: 'use' | 'download' | 'copy' | 'share';
+  device: string;
+  location?: string;
 }
 
-export interface AdminSettings {
-  featuredTools: string[];
-  bannerAdUrl?: string;
-  premiumEnabled: boolean;
+export interface ToolConfig {
+  id: string;
+  status: 'active' | 'inactive';
+  isPremium: boolean;
+  visibility: string[]; // e.g., ['US', 'EU', 'ALL']
 }
