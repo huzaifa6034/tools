@@ -35,6 +35,10 @@
   }
 }
 </script>
+<script>
+  // Shim for process.env to ensure the Gemini SDK doesn't crash if it's not pre-defined
+  window.process = window.process || { env: {} };
+</script>
 </head>
 <body class="bg-slate-50 text-slate-900 transition-colors duration-300">
     <div id="root"></div>
